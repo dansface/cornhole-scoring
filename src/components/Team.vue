@@ -1,0 +1,43 @@
+<template>
+  <div class=".team">
+    <h3>
+      {{ team.name }}
+    </h3>
+    <div class=".btn-container">
+      <Button text="+1" value="1" />
+      <Button text="+3" value="3" />
+      <Button text="-1" value="1" />
+      <Button text="-3" value="3" />
+    </div>
+  </div>
+</template>
+
+<script>
+import Button from './Button.vue';
+export default {
+    name: "Team",
+    props: {
+        team: Object,
+        score: Number,
+        name: String,
+    },
+    components: { Button }
+}
+</script>
+
+<style scope>
+
+.team {
+  background: #f4f4f4;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* TODO change this so it's a 2x2 grid */
+.btn-container button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+</style>
