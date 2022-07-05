@@ -1,19 +1,17 @@
 <template>
-  <h3>Version 1.0.0</h3>
   <!-- <router-link to="/">Go Back</router-link> -->
-  <p>Game View</p>
-  <!-- <Scoreboard
-    teamA=""
-    teamB=""
+  <Scoreboard
+    :teamAName="teamAName"
+    :teamBName="teamBName"
   />
   <Team
-    name="Team A"
-    score="0"
+    :name="teamAName"
+    :score=0
   />
   <Team
-    name="Team B"
-    score="0"
-  /> -->
+    :name="teamBName"
+    :score=0
+  />
 </template>
 
 <script>
@@ -22,11 +20,12 @@ import Scoreboard from '../components/Scoreboard'
 export default {
   name: 'Game',
   props: {
-
+    teamAName: String,
+    teamBName: String,
   },
   components: {
-    Team,
     Scoreboard,
+    Team,
   },
   data() {
     return {

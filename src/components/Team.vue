@@ -1,25 +1,24 @@
 <template>
   <div class=".team">
     <h3>
-      {{ team.name }}
+      {{ name }}
     </h3>
     <div class=".btn-container">
-      <Button text="+1" value="1" />
-      <Button text="+3" value="3" />
-      <Button text="-1" value="1" />
-      <Button text="-3" value="3" />
+      <Button text="+1" :value=1 />
+      <Button text="+3" :value=3 />
+      <Button text="-1" :value=1 />
+      <Button text="-3" :value=3 />
     </div>
   </div>
 </template>
 
 <script>
-import Button from './Button.vue';
+import Button from './Button';
 export default {
     name: "Team",
     props: {
-        team: Object,
-        score: Number,
         name: String,
+        score: Number,
     },
     components: { Button }
 }

@@ -1,11 +1,11 @@
 <template>
   <div class=".scoreboard">
-    <p>Score:</p>
+    <p>Scoreboard</p>
     <p>
-        {{ teamA.name }} : {{teamA.score}}
+        {{ teamAName }} : {{ teamAScore }}
     </p>
     <p>
-        {{ teamB.name }} : {{teamB.score}}
+        {{ teamBName }} : {{ teamBScore }}
     </p>
   </div>
 </template>
@@ -14,9 +14,15 @@
 export default {
   name: 'Scoreboard',
   props: {
-    teamA: Object,
-    teamB: Object,
+    teamAName: String,
+    teamBName: String,
   },
+  data() {
+    return {
+      teamAScore: 0,
+      teamBScore: 0,
+    }
+  }
 }
 </script>
 

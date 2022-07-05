@@ -1,25 +1,26 @@
 <template>
   <div class="container">
-    <h2>hello world header</h2>
     <Header
       title="Cornhole Scoring"
     />
-    <p>hello world p</p>
     <!-- <router-view :someBool="someBool"></router-view> -->
-    <!-- <Game /> -->
+    <Game 
+      teamAName="Team A"
+      teamBName="Team B"
+    />
     <!-- <Footer /> -->
   </div>
 </template>
 
 <script>
-// import Game from './views/Game'
+import Game from './views/Game'
 import Header from './components/Header'
 // import Footer from './components/Footer'
 
 export default {
   name: 'App',
   components: {
-    // Game,
+    Game,
     Header,
     // Footer,
 
