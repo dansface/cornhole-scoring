@@ -4,10 +4,11 @@
       {{ name }}
     </h3>
     <div class=".btn-container">
-      <Button text="+1" :value=1 />
-      <Button text="+3" :value=3 />
-      <Button text="-1" :value=1 />
-      <Button text="-3" :value=3 />
+      <!-- FUTURE How can I dynamically get value instead of hard coding here? -->
+      <Button @btn-click="$emit('btn-click', 1, this.name)" text="+1" :value=1 />
+      <Button @btn-click="$emit('btn-click', 3, this.name)" text="+3" :value=3 />
+      <Button @btn-click="$emit('btn-click', -1, this.name)" text="-1" :value=-1 />
+      <Button @btn-click="$emit('btn-click', -3, this.name)" text="-3" :value=-3 />
     </div>
   </div>
 </template>

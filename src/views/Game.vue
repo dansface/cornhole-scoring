@@ -3,12 +3,16 @@
   <Scoreboard
     :teamAName="teamAName"
     :teamBName="teamBName"
+    :teamAScore="teamAScore"
+    :teamBScore="teamBScore"
   />
   <Team
+    @btn-click="btnClick"
     :name="teamAName"
     :score=0
   />
   <Team
+    @btn-click="btnClick"
     :name="teamBName"
     :score=0
   />
@@ -29,17 +33,24 @@ export default {
   },
   data() {
     return {
-      //whatever you want
+      teamAScore: 0,
+      teamBScore: 0
     }
   },
   methods: {
-    add(team, amount) {
-        team.score += amount;
-    },
-    subtract(team, amount) {
-        team.score -= amount;
+    btnClick(value, name) {
+      if (name === this.teamAName) {
+        this.teamAScore += value;
+        if (this.teamAScore < 0) {
+          this.teamAScore = 0;
+        }
+      } else if (name === this.teamBName) {
+        this.teamBScore += value;
+        if (this.teamBScore < 0) {
+          this.teamBScore = 0;
+        }
+      }
     },
   },
-  
 };
 </script>

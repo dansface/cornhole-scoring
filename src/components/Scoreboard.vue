@@ -11,18 +11,15 @@
 </template>
 
 <script>
+// FUTURE This whole component really should be a watcher and read values from Team.vue
 export default {
   name: 'Scoreboard',
   props: {
     teamAName: String,
     teamBName: String,
+    teamAScore: Number,
+    teamBScore: Number,
   },
-  data() {
-    return {
-      teamAScore: 0,
-      teamBScore: 0,
-    }
-  }
 }
 </script>
 
