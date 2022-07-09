@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       teamAScore: 0,
-      teamBScore: 0
+      teamBScore: 0,
     }
   },
   methods: {

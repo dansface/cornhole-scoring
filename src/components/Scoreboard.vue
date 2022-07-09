@@ -1,5 +1,5 @@
 <template>
-  <div class=".scoreboard">
+  <div class="scoreboard">
     <p>Scoreboard</p>
     <p>
         {{ teamAName }} : {{ teamAScore }}
@@ -24,9 +24,9 @@ export default {
 </script>
 
 <style scope>
-/* TODO update styles */
+
 .scoreboard {
-  background: #f4f4f4;
+  background: #d4cecd;
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header
-      title="Cornhole Scoring"
+      title="Scorekeeper"
     />
     <!-- <router-view :someBool="someBool"></router-view> -->
     <Game 

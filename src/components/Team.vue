@@ -1,14 +1,14 @@
 <template>
-  <div class=".team">
-    <h3>
+  <div class="team">
+    <div class="team-name">
       {{ name }}
-    </h3>
-    <div class=".btn-container">
+    </div>
+    <div class="btn-container">
       <!-- FUTURE How can I dynamically get value instead of hard coding here? -->
-      <Button @btn-click="$emit('btn-click', 1, this.name)" text="+1" :value=1 />
-      <Button @btn-click="$emit('btn-click', 3, this.name)" text="+3" :value=3 />
-      <Button @btn-click="$emit('btn-click', -1, this.name)" text="-1" :value=-1 />
-      <Button @btn-click="$emit('btn-click', -3, this.name)" text="-3" :value=-3 />
+      <Button class="increment" @btn-click="$emit('btn-click', 1, this.name)" text="+1" :value=1 />
+      <Button class="increment" @btn-click="$emit('btn-click', 3, this.name)" text="+3" :value=3 />
+      <Button class="decrement" @btn-click="$emit('btn-click', -1, this.name)" text="-1" :value=-1 />
+      <Button class="decrement" @btn-click="$emit('btn-click', -3, this.name)" text="-3" :value=-3 />
     </div>
   </div>
 </template>
@@ -28,16 +28,26 @@ export default {
 <style scope>
 
 .team {
-  background: #f4f4f4;
+  background: #a6a1a1;
   margin: 5px;
-  padding: 10px 20px;
+  padding: 25px 20px;
   cursor: pointer;
 }
 
-/* TODO change this so it's a 2x2 grid */
-.btn-container button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.btn-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 100%;
+  padding-bottom: 40px;
+}
+
+.increment {
+  color: white;
+  background-color: green;
+}
+
+.decrement {
+  color: white;
+  background-color: red;
 }
 </style>
