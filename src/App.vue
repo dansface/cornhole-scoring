@@ -1,86 +1,78 @@
 <template>
-  <div class="container">
-    <Header
-      title="Scorekeeper"
-    />
-    <!-- <router-view :someBool="someBool"></router-view> -->
-    <Game 
-      teamAName="Team A"
-      teamBName="Team B"
-    />
-    <!-- <Footer /> -->
+  <div class="app-wrapper">
+    <Game />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Game from './views/Game'
-import Header from './components/Header'
-// import Footer from './components/Footer'
+import Footer from './components/Footer'
 
 export default {
   name: 'App',
   components: {
     Game,
-    Header,
-    // Footer,
-
-  },
-  data() {
-    return {
-    }
-  },
-  methods: {
+    Footer,
   },
 }
 </script>
 
 <style>
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap'); */
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Barlow Condensed', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --bg-page: #f1f5f9;
+  --surface-card: #ffffff;
+  --border-color: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+}
 
-/* * {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-sans);
+  background: radial-gradient(circle at top center, #ffffff 0%, var(--bg-page) 55%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.45;
 }
 
-.container {
-  max-width: 500px;
-  margin: 30px auto;
-  overflow: auto;
-  min-height: 300px;
-  border: 1px solid steelblue;
-  padding: 30px;
-  border-radius: 5px;
-}
-
-.btn {
-  display: inline-block;
-  background: #000;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 15px;
+button,
+input {
   font-family: inherit;
 }
 
-.btn:focus {
-  outline: none;
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
 }
 
-.btn:active {
-  transform: scale(0.98);
-}
-
-.btn-block {
-  display: block;
+.app-wrapper {
   width: 100%;
-} */
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 16px 36px;
+}
+
+@media (max-width: 540px) {
+  .app-wrapper {
+    padding: 0 12px 28px;
+  }
+}
 </style>

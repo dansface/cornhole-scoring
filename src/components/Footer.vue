@@ -1,18 +1,21 @@
 <template>
-  <footer>
-    <p>Copyright &copy; 2021</p>
-    <!-- <router-link to="/about">About</router-link>
-    <router-link to="/game">Game</router-link> -->
+  <footer class="app-footer">
+    <p>Cornhole Pro Scorekeeper · Progress saves automatically on this device</p>
   </footer>
 </template>
 
-<style scoped>
-a {
-  color: #333;
+<script>
+export default {
+  name: 'Footer',
 }
+</script>
 
-footer {
-  margin-top: 30px;
+<style scoped>
+.app-footer {
+  margin-top: 28px;
+  padding-top: 14px;
   text-align: center;
+  font-size: 0.76rem;
+  color: var(--text-muted);
 }
 </style>
