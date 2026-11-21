@@ -18,6 +18,7 @@ export const DEFAULT_RULES = {
   scoringMode: 'cancellation', // 'cancellation' (ACL pro) | 'straight'
   bustRule: 'none', // 'none' (ACL 21+) | 'exact' (bust back to bustScore)
   bustScore: 15,
+  winByTwo: false,
 }
 
 export function getColorMeta(hex) {
@@ -113,15 +114,12 @@ export function determineWinner(scoreA, scoreB, rules) {
     return null
   }
 
+  const minLead = rules.winByTwo ? 2 : 1
   const aReached = scoreA >= target
   const bReached = scoreB >= target
 
-  if (aReached && !bReached) return 'A'
-  if (bReached && !aReached) return 'B'
-  if (aReached && bReached) {
-    if (scoreA > scoreB) return 'A'
-    if (scoreB > scoreA) return 'B'
-  }
+  if (aReached && scoreA - scoreB >= minLead) return 'A'
+  if (bReached && scoreB - scoreA >= minLead) return 'B'
 
   return null
 }

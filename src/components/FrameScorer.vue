@@ -254,13 +254,13 @@ export default {
 .btn-submit {
   flex: 1;
   min-width: 220px;
-  height: 50px;
-  padding: 0 18px;
+  min-height: 54px;
+  padding: 12px 20px;
   border-radius: 14px;
   border: none;
   background: var(--submit-bg, #0f172a);
   color: #ffffff;
-  font-size: 0.96rem;
+  font-size: 0.98rem;
   font-weight: 700;
   cursor: pointer;
   display: inline-flex;
@@ -286,22 +286,22 @@ export default {
 
 .submit-main {
   font-family: var(--font-display);
-  font-size: 1.12rem;
+  font-size: 1.18rem;
   font-weight: 800;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
 .submit-pill {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.22);
+  padding: 5px 12px;
   border-radius: 999px;
-  font-size: 0.8rem;
+  font-size: 0.84rem;
   font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 170px;
+  max-width: 185px;
 }
 
 @media (max-width: 680px) {
@@ -312,11 +312,34 @@ export default {
   .scorer-actions {
     flex-direction: column-reverse;
     align-items: stretch;
+    gap: 10px;
+  }
+
+  .btn-submit {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    min-height: 64px;
+    padding: 15px 20px;
+    border-radius: 16px;
+  }
+
+  .submit-main {
+    font-size: 1.32rem;
+  }
+
+  .submit-pill {
+    font-size: 0.9rem;
+    padding: 6px 13px;
   }
 
   .secondary-actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .btn-secondary {
+    height: 48px;
   }
 }
 </style>

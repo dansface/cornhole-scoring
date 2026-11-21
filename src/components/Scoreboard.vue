@@ -142,6 +142,7 @@
         </span>
       </div>
       <div class="sb-preview-outcome">
+        <span v-if="isWinByTwoOvertime && !preview.willWin" class="overtime-tag">WIN BY 2</span>
         <span v-if="preview.willWin" class="match-point-tag">MATCH POINT</span>
         <span v-if="preview.willBustA || preview.willBustB" class="bust-tag">BUST!</span>
         <span class="outcome-text">{{ previewOutcomeText }}</span>
@@ -219,8 +220,18 @@ export default {
     rulesSummary() {
       const target = this.rules.targetScore
       const mode = this.rules.scoringMode === 'straight' ? 'Straight' : 'Cancellation'
+      const winByTwo = this.rules.bustRule !== 'exact' && this.rules.winByTwo ? ' · Win by 2' : ''
       const bust = this.rules.bustRule === 'exact' ? `Exact ${target} (Bust ${this.rules.bustScore})` : `First to ${target}`
-      return `${bust} · ${mode}`
+      return `${bust}${winByTwo} · ${mode}`
+    },
+    isWinByTwoOvertime() {
+      const target = Number(this.rules.targetScore) || 21
+      return (
+        !this.winner &&
+        this.rules.bustRule !== 'exact' &&
+        Boolean(this.rules.winByTwo) &&
+        (this.scoreA >= target || this.scoreB >= target)
+      )
     },
     previewBarClass() {
       if (this.preview.willWin) return 'is-match-point'
@@ -573,6 +584,17 @@ export default {
   font-size: 0.84rem;
   font-weight: 700;
   color: #ffffff;
+}
+
+.overtime-tag {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  background: #38bdf8;
+  color: #0f172a;
+  padding: 2px 7px;
+  border-radius: 5px;
 }
 
 .match-point-tag {

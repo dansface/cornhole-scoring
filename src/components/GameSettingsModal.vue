@@ -135,6 +135,34 @@
           </div>
         </div>
 
+        <!-- Win by 2 Toggle -->
+        <div class="field-group">
+          <div class="toggle-card" :class="{ 'is-disabled': form.rules.bustRule === 'exact' }">
+            <div class="toggle-copy">
+              <span class="toggle-title">Win by 2</span>
+              <span class="toggle-sub">
+                {{
+                  form.rules.bustRule === 'exact'
+                    ? 'Only available with ' + form.rules.targetScore + '+ Wins mode'
+                    : 'Must lead by at least 2 points to win'
+                }}
+              </span>
+            </div>
+            <button
+              type="button"
+              role="switch"
+              class="switch-btn"
+              :class="{ 'is-on': form.rules.bustRule !== 'exact' && form.rules.winByTwo }"
+              :aria-checked="String(form.rules.bustRule !== 'exact' && form.rules.winByTwo)"
+              :disabled="form.rules.bustRule === 'exact'"
+              aria-label="Toggle Win by 2"
+              @click="form.rules.winByTwo = !form.rules.winByTwo"
+            >
+              <span class="switch-thumb"></span>
+            </button>
+          </div>
+        </div>
+
         <!-- Starting Honors -->
         <div class="field-group">
           <span class="field-label">Frame 1 Honors (Throws First)</span>
@@ -239,6 +267,7 @@ export default {
         rules: {
           ...this.form.rules,
           bustScore: this.computedBustScore,
+          winByTwo: this.form.rules.bustRule === 'exact' ? false : Boolean(this.form.rules.winByTwo),
         },
         startingHonors: this.form.startingHonors,
       })
@@ -440,6 +469,74 @@ export default {
 
 .seg-btn.is-active small {
   color: #cbd5e1;
+}
+
+.toggle-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.toggle-card.is-disabled {
+  opacity: 0.55;
+}
+
+.toggle-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.toggle-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.toggle-sub {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.switch-btn {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  border-radius: 999px;
+  border: none;
+  background: #cbd5e1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.18s ease;
+}
+
+.switch-btn:disabled {
+  cursor: not-allowed;
+}
+
+.switch-btn.is-on {
+  background: #0f172a;
+}
+
+.switch-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25);
+  transition: transform 0.18s ease;
+}
+
+.switch-btn.is-on .switch-thumb {
+  transform: translateX(20px);
 }
 
 .modal-footer {

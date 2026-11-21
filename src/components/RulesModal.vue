@@ -58,8 +58,9 @@
           <h3>4. Winning &amp; Pro Stats</h3>
           <p>
             In official ACL rules, the first team to reach <strong>21 or more points</strong> at
-            the end of a frame wins (no busting). Prefer backyard rules? Switch to
-            <strong>Exact 21 (Bust to 15)</strong> anytime in Settings.
+            the end of a frame wins (no busting). Prefer backyard rules? Enable
+            <strong>Win by 2</strong> (must reach the target score and lead by at least 2 points)
+            or switch to <strong>Exact 21 (Bust to 15)</strong> anytime in Settings.
           </p>
           <p class="rule-note">
             <strong>PPR (Points Per Round)</strong> measures your average raw points per frame
