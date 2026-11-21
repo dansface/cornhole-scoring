@@ -37,18 +37,21 @@
             <span class="name-text">{{ teamA.name }}</span>
           </button>
 
-          <button
-            v-if="!winner && nextHonors === 'A'"
-            type="button"
-            class="honors-badge"
-            :class="{ 'is-clickable': framesPlayed === 0 }"
-            :title="framesPlayed === 0 ? 'Click to switch who throws first' : 'Throws first this frame (Honors)'"
-            @click="framesPlayed === 0 && $emit('toggle-starting-honors')"
-          >
-            <span class="bag-mini"></span>
-            <span>Throws 1st</span>
-          </button>
-          <span v-else-if="winner === 'A'" class="winner-chip">WINNER</span>
+          <div class="sb-status-row">
+            <button
+              v-if="!winner && nextHonors === 'A'"
+              type="button"
+              class="honors-badge"
+              :class="{ 'is-clickable': framesPlayed === 0 }"
+              :title="framesPlayed === 0 ? 'Tap to switch who throws first' : 'Throws first this frame (Honors)'"
+              @click="framesPlayed === 0 && $emit('toggle-starting-honors')"
+            >
+              <span class="bag-mini"></span>
+              <span>Throws 1st</span>
+              <span v-if="framesPlayed === 0" class="swap-hint" aria-hidden="true">⇄</span>
+            </button>
+            <span v-else-if="winner === 'A'" class="winner-chip">WINNER</span>
+          </div>
         </div>
 
         <div class="sb-score-row">
@@ -96,18 +99,21 @@
             <span class="name-text">{{ teamB.name }}</span>
           </button>
 
-          <button
-            v-if="!winner && nextHonors === 'B'"
-            type="button"
-            class="honors-badge"
-            :class="{ 'is-clickable': framesPlayed === 0 }"
-            :title="framesPlayed === 0 ? 'Click to switch who throws first' : 'Throws first this frame (Honors)'"
-            @click="framesPlayed === 0 && $emit('toggle-starting-honors')"
-          >
-            <span class="bag-mini"></span>
-            <span>Throws 1st</span>
-          </button>
-          <span v-else-if="winner === 'B'" class="winner-chip">WINNER</span>
+          <div class="sb-status-row">
+            <button
+              v-if="!winner && nextHonors === 'B'"
+              type="button"
+              class="honors-badge"
+              :class="{ 'is-clickable': framesPlayed === 0 }"
+              :title="framesPlayed === 0 ? 'Tap to switch who throws first' : 'Throws first this frame (Honors)'"
+              @click="framesPlayed === 0 && $emit('toggle-starting-honors')"
+            >
+              <span class="bag-mini"></span>
+              <span>Throws 1st</span>
+              <span v-if="framesPlayed === 0" class="swap-hint" aria-hidden="true">⇄</span>
+            </button>
+            <span v-else-if="winner === 'B'" class="winner-chip">WINNER</span>
+          </div>
         </div>
 
         <div class="sb-score-row">
@@ -325,7 +331,7 @@ export default {
 
 .sb-teams {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: stretch;
   gap: 12px;
 }
@@ -379,25 +385,31 @@ export default {
 
 .sb-team-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  min-height: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
 }
 
 .sb-team-name {
   display: inline-flex;
   align-items: center;
   gap: 7px;
+  width: 100%;
   background: transparent;
   border: none;
   padding: 0;
   color: #f8fafc;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 700;
   cursor: pointer;
   min-width: 0;
   text-align: left;
+}
+
+.sb-status-row {
+  min-height: 22px;
+  display: flex;
+  align-items: center;
 }
 
 .sb-team-name:hover .name-text {
@@ -423,7 +435,7 @@ export default {
 .honors-badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   font-size: 0.66rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -432,9 +444,14 @@ export default {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
-  padding: 2px 7px;
+  padding: 2px 8px;
   flex-shrink: 0;
   cursor: default;
+}
+
+.swap-hint {
+  opacity: 0.7;
+  font-size: 0.72rem;
 }
 
 .honors-badge.is-clickable {
@@ -468,6 +485,7 @@ export default {
 .sb-score-row {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
   gap: 8px;
   margin: 4px 0 6px;
 }
@@ -630,7 +648,7 @@ export default {
   }
 
   .sb-teams {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 8px;
   }
 
@@ -638,13 +656,17 @@ export default {
     padding: 11px 11px 10px;
   }
 
+  .sb-team-name {
+    font-size: 0.92rem;
+  }
+
   .sb-score {
     font-size: 2.85rem;
   }
 
   .honors-badge {
-    padding: 2px 6px;
-    font-size: 0.6rem;
+    padding: 2px 7px;
+    font-size: 0.62rem;
   }
 }
 </style>

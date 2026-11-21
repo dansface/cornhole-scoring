@@ -222,6 +222,7 @@ export default {
   align-items: center;
   gap: 7px;
   min-width: 0;
+  flex: 1;
 }
 
 .team-swatch {
